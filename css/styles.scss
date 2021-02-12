@@ -1,0 +1,287 @@
+@import "./variables";
+@import "./mixins";
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+.header {
+    width: 100%;
+    height: 25vh;
+    background: $desaturatedCyan url("/images/bg-header-mobile.svg");
+    background-size: cover;
+    position: relative;
+
+    @include media-query(tablet) {
+        background-image: url("/images/bg-header-desktop.svg");
+    }
+
+    &__search-bar {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        width: Min(67.5rem, 90%);
+        background-color: $white;
+        padding: 1rem;
+        border-radius: .5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__filters {
+        flex-basis: 90%;
+        margin-top: -.8rem;
+    }
+
+    &__clear {
+        font-family: $font-family;
+        font-size: .8rem;
+        font-weight: 700;
+        color: $darkGrayishCyan;
+        letter-spacing: 1px;
+        flex-basis: 10%;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            color: $desaturatedCyan;
+            text-decoration: underline;
+        }
+    }
+}
+
+.container {
+    padding: 3rem 1.5rem;
+    background-color: $backgroundColor;
+}
+
+.card {
+    background-color: $white;
+    padding: 2.5rem 1.5rem 1.5rem;
+    margin: 1rem auto 3rem;
+    border-radius: .5rem;
+    position: relative;
+    width: Min(67.5rem, 100%);
+    box-shadow: 0 0.3125rem 0.625rem 0 $boxShadow;
+    animation: fade-in .2s ease-in-out;
+
+    @include media-query(tablet) {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    &--featured {
+        border-left: 0.3125rem solid $desaturatedCyan;
+    }
+
+    &__details-wrapper {
+        @include media-query(tablet) {
+            display: flex;
+            align-items: center;
+            flex: 1.8;
+        }
+
+        @include media-query(desktop-sm) {
+            flex: 1;
+        }
+    }
+
+    &__logo-container {
+        position: absolute;
+        top: 0;
+        transform: translateY(-50%);
+
+        @include media-query(tablet) {
+            position: initial;
+            transform: none;
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__logo {
+        width: 4rem;
+
+        @include media-query(tablet) {
+            width: 100%;
+        }
+    }
+
+    &__company {
+        display: flex;
+        align-items: center;
+        cursor: default;
+    }
+
+    &__company-name {
+        font-family: $font-family;
+        font-weight: 700;
+        font-size: .9rem;
+        letter-spacing: 1px;
+        color: $desaturatedCyan;
+        margin: .5rem 1rem .5rem 0;
+    }
+
+    &__job-type {
+        font-family: $font-family;
+        font-size: .7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: .4rem .6rem;
+        border-radius: 2rem;
+        letter-spacing: 1px;
+        margin: 0 .125rem;
+
+        &--new {
+            background-color: $desaturatedCyan;
+            color: $white;
+        }
+
+        &--featured {
+            background-color: $veryDarkGrayishCyan;
+            color: $white;
+        }
+    }
+
+    &__position {
+        font-family: $font-family;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: $veryDarkGrayishCyan;
+        margin: .8rem 0;
+        cursor: pointer;
+
+        &:hover {
+            color: $desaturatedCyan;
+        }
+
+        @include media-query(tablet) {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__overview {
+        display: flex;
+        align-items: center;
+        cursor: default;
+    }
+
+    &__overview-text {
+        font-family: $font-family;
+        font-weight: 500;
+        font-size: .9rem;
+        color: $darkGrayishCyan;
+        margin: 0rem .5rem .5rem 0;
+
+        &:not(:last-child) {
+            &::after {
+                content: "•";
+                margin-left: .5rem;
+            }
+        }
+
+        @include media-query(tablet) {
+            font-size: 1rem;
+            margin: 0rem 1rem .5rem 0;
+
+            &:not(:last-child) {
+                &::after {
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+
+    &__divider {
+        @include media-query(tablet) {
+            display: none;
+        }
+    }
+
+    &__filters {
+        @include media-query(tablet) {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+.button {
+    font-family: $font-family;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    padding: .5rem;
+    border-radius: .1875rem;
+    letter-spacing: 1px;
+    margin: .8rem .8rem 0 0;
+
+    color: $desaturatedCyan;
+    background-color: $lightGrayishCyan;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $desaturatedCyan;
+        color: $white;
+    }
+
+    @include media-query(tablet) {
+        margin: .5rem .5rem 0 0;
+    }
+
+    &--selected {
+        margin: .8rem 2.5rem 0 0;
+
+        &::after {
+            content: url("/images/icon-remove.svg");
+            width: 1.8rem;
+            height: 100%;
+            background-color: #5ba4a4;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            border-radius: 0 .1875rem .1875rem 0;
+            cursor: pointer;
+        }
+
+        &:hover {
+            color: $desaturatedCyan;
+            background-color: $lightGrayishCyan;
+
+            &::after {
+                background-color: $veryDarkGrayishCyan;
+            }
+        } 
+    }
+}
+
+.attribution {
+    font-family: $font-family;
+    font-size: 11px;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: default;
+
+    a { color: hsl(228, 45%, 44%); }
+}

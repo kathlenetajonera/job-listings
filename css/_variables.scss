@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
+
+//colors
+$desaturatedCyan: hsl(180, 29%, 50%);
+$backgroundColor: hsl(180, 52%, 96%);
+$lightGrayishCyan: hsl(180, 31%, 95%);
+$darkGrayishCyan: hsl(180, 8%, 52%);
+$veryDarkGrayishCyan: hsl(180, 14%, 20%);
+$white: rgb(255, 255, 255);
+$boxShadow: #d9edee;
+
+$font-family: "Red Hat", sans-serif;
+$mediaBreakpoints: (
+    mobile: 23.4375rem,
+    tablet: 48rem,
+    desktop-sm: 64rem
+);
