@@ -102,6 +102,12 @@ body {
   background-color: #effafa;
 }
 
+@media (min-width: 64rem) {
+  .container {
+    padding: 3rem;
+  }
+}
+
 .card {
   background-color: white;
   padding: 2.5rem 1.5rem 1.5rem;
@@ -111,8 +117,17 @@ body {
   width: Min(67.5rem, 100%);
   -webkit-box-shadow: 0 0.3125rem 0.625rem 0 #d9edee;
           box-shadow: 0 0.3125rem 0.625rem 0 #d9edee;
-  -webkit-animation: fade-in .2s ease-in-out;
-          animation: fade-in .2s ease-in-out;
+  opacity: 0;
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.card--active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
 }
 
 @media (min-width: 48rem) {

@@ -64,6 +64,10 @@ body {
 .container {
     padding: 3rem 1.5rem;
     background-color: $backgroundColor;
+
+    @include media-query(desktop-sm) {
+        padding: 3rem;
+    }
 }
 
 .card {
@@ -74,7 +78,14 @@ body {
     position: relative;
     width: Min(67.5rem, 100%);
     box-shadow: 0 0.3125rem 0.625rem 0 $boxShadow;
-    animation: fade-in .2s ease-in-out;
+    opacity: 0;
+    transform: translateY(10%);
+    transition: .2s ease-in-out;
+
+    &--active {
+        transform: translateY(0);
+        opacity: 1;
+    }
 
     @include media-query(tablet) {
         display: flex;

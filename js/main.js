@@ -84,8 +84,10 @@ async function renderJobList() {
     if (previousList) {
         previousList.forEach(list => list.remove());
         render();
+        enableObserver();
     } else {
         render();
+        enableObserver();
     }
 
     function render() {
@@ -136,6 +138,24 @@ async function renderJobList() {
             }
         })
     }
+}
+
+function enableObserver() {
+    const cards = document.querySelectorAll(".card");
+    const isVisible = entries => {
+        entries.forEach(entry => {
+            if ( entry.isIntersecting ) {
+                entry.target.classList.add("card--active");
+            } else {
+                entry.target.classList.remove("card--active");
+            }
+        })
+    };
+    const observer = new IntersectionObserver(isVisible);
+
+    cards.forEach(card => {
+        observer.observe(card)
+    })
 }
 
 function adjustSpacing() {
